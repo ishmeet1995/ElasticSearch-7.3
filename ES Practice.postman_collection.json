@@ -10,6 +10,7 @@
 			"request": {
 				"method": "GET",
 				"header": [
+					{
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text",
