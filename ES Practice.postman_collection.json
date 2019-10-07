@@ -1,0 +1,487 @@
+{
+	"info": {
+		"_postman_id": "83654be2-4893-4b63-bfa5-8206a36eb1cc",
+		"name": "ES Practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Retrieve all documents of an Index",
+			"request": {
+				"method": "GET",
+				"header": [
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9200/business/_search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"business",
+						"_search"
+					]
+				},
+				"description": "Search all documents in ES"
+			},
+			"response": [
+				{
+					"name": "Search all documents in ES",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9200/business/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"business",
+								"_search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "content-length",
+							"value": "267"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"took\": 4,\n    \"timed_out\": false,\n    \"_shards\": {\n        \"total\": 1,\n        \"successful\": 1,\n        \"skipped\": 0,\n        \"failed\": 0\n    },\n    \"hits\": {\n        \"total\": {\n            \"value\": 2,\n            \"relation\": \"eq\"\n        },\n        \"max_score\": 1,\n        \"hits\": [\n            {\n                \"_index\": \"business\",\n                \"_type\": \"_doc\",\n                \"_id\": \"1234\",\n                \"_score\": 1,\n                \"_source\": {\n                    \"address\": \"New Delhi\",\n                    \"floors\": 10,\n                    \"offices\": 21,\n                    \"loc\": {\n                        \"lat\": 40.643,\n                        \"long\": -52.432\n                    }\n                }\n            },\n            {\n                \"_index\": \"business\",\n                \"_type\": \"_doc\",\n                \"_id\": \"123\",\n                \"_score\": 1,\n                \"_source\": {\n                    \"address\": \"New Delhi\",\n                    \"floors\": 10,\n                    \"offices\": 22,\n                    \"loc\": {\n                        \"lat\": 40.643,\n                        \"long\": -52.432\n                    }\n                }\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Retrieving Document vis Doc ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/business/_doc/123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"business",
+						"_doc",
+						"123"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Retrieving Document vis Doc ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/business/_doc/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"business",
+								"_doc",
+								"123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "content-length",
+							"value": "190"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_index\": \"business\",\n    \"_type\": \"_doc\",\n    \"_id\": \"123\",\n    \"_version\": 3,\n    \"_seq_no\": 3,\n    \"_primary_term\": 1,\n    \"found\": true,\n    \"_source\": {\n        \"address\": \"New Delhi\",\n        \"floors\": 10,\n        \"offices\": 22,\n        \"loc\": {\n            \"lat\": 40.643,\n            \"long\": -52.432\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Retireve a Document via Query - Type 1 (URI)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/business/_search?q=floors:21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"business",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "floors:21"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Retireve a Document via Query - Type 1 (URI)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/business/_search?q=floors:21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"business",
+								"_search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "floors:21"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "content-length",
+							"value": "140"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"took\": 10,\n    \"timed_out\": false,\n    \"_shards\": {\n        \"total\": 1,\n        \"successful\": 1,\n        \"skipped\": 0,\n        \"failed\": 0\n    },\n    \"hits\": {\n        \"total\": {\n            \"value\": 0,\n            \"relation\": \"eq\"\n        },\n        \"max_score\": null,\n        \"hits\": []\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Retireve a Document via Query - Type 2 (using requst body)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\":{\n\t\t\t\"term\":{\n\t\t\t\t\"offices\":21\n\t\t\t\t}\n\t\t\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9200/business/_search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"business",
+						"_search"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Retireve a Document via Query - Type 2 (using requst body)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":{\n\t\t\t\"term\":{\n\t\t\t\t\"offices\":21\n\t\t\t\t}\n\t\t\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/business/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"business",
+								"_search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "content-length",
+							"value": "252"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"took\": 0,\n    \"timed_out\": false,\n    \"_shards\": {\n        \"total\": 1,\n        \"successful\": 1,\n        \"skipped\": 0,\n        \"failed\": 0\n    },\n    \"hits\": {\n        \"total\": {\n            \"value\": 1,\n            \"relation\": \"eq\"\n        },\n        \"max_score\": 1,\n        \"hits\": [\n            {\n                \"_index\": \"business\",\n                \"_type\": \"_doc\",\n                \"_id\": \"1234\",\n                \"_score\": 1,\n                \"_source\": {\n                    \"address\": \"New Delhi\",\n                    \"floors\": 10,\n                    \"offices\": 21,\n                    \"loc\": {\n                        \"lat\": 40.643,\n                        \"long\": -52.432\n                    }\n                }\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Indexing a document",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": [
+				{
+					"name": "Indexing a document (consecutive times: previous doc is updated)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Business Name\": \"Mark and Sons\",\n\t\"Business Type\": \"Manufacturing\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/business/_doc/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"business",
+								"_doc",
+								"12345"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "content-length",
+							"value": "147"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_index\": \"business\",\n    \"_type\": \"_doc\",\n    \"_id\": \"12345\",\n    \"_version\": 2,\n    \"result\": \"updated\",\n    \"_shards\": {\n        \"total\": 2,\n        \"successful\": 1,\n        \"failed\": 0\n    },\n    \"_seq_no\": 5,\n    \"_primary_term\": 1\n}"
+				},
+				{
+					"name": "Indexing a document (for the first time)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Business Name\": \"Mark and Sons\",\n\t\"Business Type\": \"Manufacturing\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9200/business/_doc/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"business",
+								"_doc",
+								"12345"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Location",
+							"value": "/business/_doc/12345"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "content-length",
+							"value": "147"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_index\": \"business\",\n    \"_type\": \"_doc\",\n    \"_id\": \"12345\",\n    \"_version\": 1,\n    \"result\": \"created\",\n    \"_shards\": {\n        \"total\": 2,\n        \"successful\": 1,\n        \"failed\": 0\n    },\n    \"_seq_no\": 4,\n    \"_primary_term\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Analyzer test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tokenizer\":\"standard\",\n\t\"text\":\"Hello, World\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/_analyze",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_analyze"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tokenizer Test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"analyzer\":\"standard\",\n\t\"text\":\"Hello, World\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/_analyze",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_analyze"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
